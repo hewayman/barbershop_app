@@ -31,7 +31,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="33dp"
         android:background="#985920"
-        android:text="@string/make_appointment"
+        android:text="@string/go_to_calendar"
         android:textColor="#C2B59B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     // continues to home page
     public void openHome() {
-        Intent intent = new Intent(this, UserHome.class);
+        Intent intent = new Intent(this, UserHomeActivity.class);
         startActivity(intent);
     }
 }

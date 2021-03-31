@@ -7,4 +7,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CustomCalendarMonth" parent="AppTheme">
+        <item name="android:textColorPrimary">@color/orange</item>
+    </style>
+
+    <style name="CustomCalendarWeek" >
+        <item name="android:textColor">@color/tan</item>
+    </style>
+
 </resources>

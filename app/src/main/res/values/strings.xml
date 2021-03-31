@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Barbershop</string>
     <string name="haircut">Haircut</string>
-    <string name="make_appointment">Make Appointment</string>
+    <string name="go_to_calendar">Go to Calendar</string>
     <string name="color">Color</string>
     <string name="style">Style</string>
     <string name="log_in">Log In</string>
@@ -10,10 +10,12 @@
     <string name="logo_desc">barbershop logo</string>
     <string name="shave">Shave</string>
     <string name="barbershop_name">barbershop name</string>
+    <string name="selected_date">Selected Date</string>
 
     <string-array name="barber_array">
         <item>Paul</item>
         <item>Travis</item>
         <item>Fernando</item>
     </string-array>
+
 </resources>
