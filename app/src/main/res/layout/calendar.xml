@@ -6,10 +6,24 @@
     android:layout_height="match_parent"
     android:background="#343434">
 
+    <Button
+        android:id="@+id/confirmBtn"
+        android:layout_width="205dp"
+        android:layout_height="36dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:background="#985920"
+        android:text="@string/confirm_appt"
+        android:textColor="#C2B59B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
     <CalendarView
         android:id="@+id/calendarView"
-        android:layout_width="413dp"
-        android:layout_height="299dp"
+        android:layout_width="411dp"
+        android:layout_height="246dp"
         android:layout_marginTop="16dp"
         android:focusedMonthDateColor="#FFFFFF"
         android:textColorPrimary="@color/orange"
@@ -50,4 +64,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateTextView"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="409dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
