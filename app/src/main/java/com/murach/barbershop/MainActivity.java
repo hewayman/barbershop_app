@@ -6,16 +6,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
     private Button loginBtn;
-    private TextView registerTextView;
+    private TextView goToRegisterTextView;
+    private EditText usernameEditText;
+    private EditText passwordEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        usernameEditText = (EditText) findViewById(R.id.usernameEditText);
+        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
 
         addListenerOnButton();
         addListenerForRegistration();
@@ -27,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DataBaseHelper.checkUser(usernameEditText.toString(), passwordEditText.toString());
                 openHome();
             }
         });
@@ -34,10 +42,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void addListenerForRegistration() {
         // set listener for registration text view
-        registerTextView = (TextView) findViewById(R.id.registerTextView);
-        registerTextView.setOnClickListener(new View.OnClickListener() {
+        goToRegisterTextView = (TextView) findViewById(R.id.goToRegisterTextView);
+        goToRegisterTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 openRegistration();
             }
         });
@@ -51,7 +60,11 @@ public class MainActivity extends AppCompatActivity {
 
     // continues to registration page
     public void openRegistration() {
+
+
         Intent intent = new Intent(this, UserRegistration.class);
         startActivity(intent);
     }
+
+
 }
