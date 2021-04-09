@@ -60,7 +60,7 @@
         app:layout_constraintVertical_bias="0.492" />
 
     <EditText
-        android:id="@+id/usernameEditText"
+        android:id="@+id/emailEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autofillHints="@string/email"
@@ -114,10 +114,10 @@
         android:textColorLink="#C2B59B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.747" />
+        app:layout_constraintVertical_bias="0.73" />
 
     <Button
         android:id="@+id/registerButton"
@@ -152,9 +152,8 @@
         android:id="@+id/phoneEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
         android:autofillHints="@string/phone"
         android:ems="10"
         android:hint="@string/phone"
@@ -164,5 +163,5 @@
         android:textColorHint="#C2B59B"
         android:textColorLink="#C2B59B"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

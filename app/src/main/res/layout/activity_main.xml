@@ -7,6 +7,25 @@
     android:background="#343434"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="105dp"
+        android:layout_marginLeft="105dp"
+        android:layout_marginTop="6dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:autofillHints="@string/username_text"
+        android:hint="@string/username_text"
+        android:text="@string/username_text"
+        android:textColor="#C2B59B"
+        android:textColorHighlight="#C2B59B"
+        android:textColorHint="#C2B59B"
+        android:textColorLink="#C2B59B"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImage" />
+
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="282dp"
@@ -24,26 +43,10 @@
         app:srcCompat="@drawable/barbershop" />
 
     <EditText
-        android:id="@+id/usernameEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autofillHints="@string/email"
-        android:ems="10"
-        android:hint="@string/username_text"
-        android:inputType="textEmailAddress"
-        android:textColor="#C2B59B"
-        android:textColorHighlight="#C2B59B"
-        android:textColorHint="#C2B59B"
-        android:textColorLink="#C2B59B"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoImage" />
-
-    <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="211dp"
         android:layout_height="45dp"
+        android:layout_marginTop="9dp"
         android:autofillHints="@string/password"
         android:ems="10"
         android:hint="@string/password"
@@ -55,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="315dp" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
 
     <Button
         android:id="@+id/loginBtn"
