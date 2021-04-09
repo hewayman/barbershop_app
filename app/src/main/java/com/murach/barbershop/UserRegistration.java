@@ -17,7 +17,7 @@ public class UserRegistration extends AppCompatActivity {
     private Button registerButton;
     private EditText firstNameEditText;
     private EditText lastNameEditText;
-    private EditText emailRegisterEditText;
+    private EditText emailEditText;
     private EditText passwordRegisterEditText;
     private EditText usernameEditText;
     private EditText phoneEditText;
@@ -31,7 +31,7 @@ public class UserRegistration extends AppCompatActivity {
         registerButton = findViewById(R.id.registerButton);
         firstNameEditText = findViewById(R.id.firstNameEditText);
         lastNameEditText = findViewById(R.id.lastNameEditText);
-        emailRegisterEditText = findViewById(R.id.emailRegisterEditText);
+        emailEditText = findViewById(R.id.emailEditText);
         passwordRegisterEditText = findViewById(R.id.passwordRegisterEditText);
         usernameEditText = findViewById(R.id.usernameRegisterEditText);
         phoneEditText = findViewById(R.id.phoneEditText);
@@ -46,7 +46,7 @@ public class UserRegistration extends AppCompatActivity {
                 UserModel userModel;
 
                 try{
-                    userModel = new UserModel(-1, firstNameEditText.getText().toString(), lastNameEditText.getText().toString(), emailRegisterEditText.getText().toString(), phoneEditText.getText().toString(), usernameEditText.getText().toString(), passwordRegisterEditText.getText().toString());
+                    userModel = new UserModel(-1, firstNameEditText.getText().toString(), lastNameEditText.getText().toString(), emailEditText.getText().toString(), phoneEditText.getText().toString(), usernameEditText.getText().toString(), passwordRegisterEditText.getText().toString());
                 }
                 catch(Exception e){
                     Toast.makeText(UserRegistration.this, "Error Creating Account", Toast.LENGTH_SHORT).show();
