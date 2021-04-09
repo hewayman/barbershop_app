@@ -114,10 +114,10 @@
         android:textColorLink="#C2B59B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.73" />
+        app:layout_constraintVertical_bias="0.747" />
 
     <Button
         android:id="@+id/registerButton"
@@ -152,10 +152,11 @@
         android:id="@+id/phoneEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="103dp"
-        android:layout_marginLeft="103dp"
-        android:ems="10"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="8dp"
         android:autofillHints="@string/phone"
+        android:ems="10"
         android:hint="@string/phone"
         android:inputType="phone"
         android:textColor="#C2B59B"
@@ -163,5 +164,5 @@
         android:textColorHint="#C2B59B"
         android:textColorLink="#C2B59B"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailRegisterEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

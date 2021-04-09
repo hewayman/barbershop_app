@@ -9,12 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.murach.barbershop.DataBaseHelper;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button loginBtn;
     private TextView goToRegisterTextView;
     private EditText usernameEditText;
     private EditText passwordEditText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DataBaseHelper.checkUser(usernameEditText.toString(), passwordEditText.toString());
+                DataBaseHelper.checkUser(usernameEditText.getText().toString(), passwordEditText.getText().toString());
                 openHome();
             }
         });
