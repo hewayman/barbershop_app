@@ -16,10 +16,10 @@ public class UserHomeActivity extends AppCompatActivity {
     private Button styleBtn;
     private Button shaveBtn;
     private Button colorBtn;
-    private Boolean isHaircutClicked;
-    private Boolean isStyleClicked;
-    private Boolean isShaveClicked;
-    private Boolean isColorClicked;
+    private Boolean isHaircutClicked = false;
+    private Boolean isStyleClicked = false;
+    private Boolean isShaveClicked = false;
+    private Boolean isColorClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +32,11 @@ public class UserHomeActivity extends AppCompatActivity {
         haircutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isHaircutClicked = true;
+                isHaircutClicked = !isHaircutClicked;
                 if(isHaircutClicked) {
                     haircutBtn.setBackgroundColor(getResources().getColor(R.color.orange));
+                } else {
+                    haircutBtn.setBackgroundColor(getResources().getColor(R.color.tan));
                 }
             }
         });
@@ -43,20 +45,25 @@ public class UserHomeActivity extends AppCompatActivity {
         styleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isStyleClicked = true;
+                isStyleClicked = !isStyleClicked;
                 if(isStyleClicked) {
                     styleBtn.setBackgroundColor(getResources().getColor(R.color.orange));
+                } else {
+                    styleBtn.setBackgroundColor(getResources().getColor(R.color.tan));
                 }
             }
+
         });
 
         shaveBtn = (Button) findViewById(R.id.shaveBtn);
         shaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isShaveClicked = true;
+                isShaveClicked = !isShaveClicked;
                 if(isShaveClicked) {
                     shaveBtn.setBackgroundColor(getResources().getColor(R.color.orange));
+                } else {
+                    shaveBtn.setBackgroundColor(getResources().getColor(R.color.tan));
                 }
             }
         });
@@ -65,9 +72,11 @@ public class UserHomeActivity extends AppCompatActivity {
         colorBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isColorClicked = true;
+                isColorClicked = !isColorClicked;
                 if(isColorClicked) {
                     colorBtn.setBackgroundColor(getResources().getColor(R.color.orange));
+                } else {
+                    colorBtn.setBackgroundColor(getResources().getColor(R.color.tan));
                 }
             }
         });
