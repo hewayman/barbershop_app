@@ -47,17 +47,21 @@ public class UserRegistration extends AppCompatActivity {
 
                 try{
                     userModel = new UserModel(-1, firstNameEditText.getText().toString(), lastNameEditText.getText().toString(), emailEditText.getText().toString(), phoneEditText.getText().toString(), usernameEditText.getText().toString(), passwordRegisterEditText.getText().toString());
+                    DataBaseHelper dbHelper = new DataBaseHelper(UserRegistration.this);
+
+                    boolean success = dbHelper.addNewUser(userModel);
+                    Toast.makeText(UserRegistration.this, "Success = " + success, Toast.LENGTH_SHORT).show();
                 }
                 catch(Exception e){
                     Toast.makeText(UserRegistration.this, "Error Creating Account", Toast.LENGTH_SHORT).show();
-                    userModel = new UserModel(-1, "error", "error", "error", "error", "error", "error");
+//                    userModel = new UserModel(-1, "error", "error", "error", "error", "error", "error");
 
                 }
 
-                DataBaseHelper dbHelper = new DataBaseHelper(UserRegistration.this);
-
-                boolean success = dbHelper.addNewUser(userModel);
-                Toast.makeText(UserRegistration.this, "Success = " + success, Toast.LENGTH_SHORT).show();
+//                DataBaseHelper dbHelper = new DataBaseHelper(UserRegistration.this);
+//
+//                boolean success = dbHelper.addNewUser(userModel);
+//                Toast.makeText(UserRegistration.this, "Success = " + success, Toast.LENGTH_SHORT).show();
             }
         });
 

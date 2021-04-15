@@ -17,6 +17,7 @@
         android:layout_marginLeft="56dp"
         android:layout_marginTop="44dp"
         android:background="#C2B59B"
+        android:checked="true"
         android:text="@string/haircut"
         android:textColor="#343434"
         android:textColorLink="#343434"

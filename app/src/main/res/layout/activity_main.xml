@@ -18,7 +18,6 @@
         android:ems="10"
         android:hint="@string/username_text"
         android:inputType="textPersonName"
-        android:text="@string/username_text"
         android:textColor="#C2B59B"
         android:textColorHighlight="#C2B59B"
         android:textColorHint="#C2B59B"

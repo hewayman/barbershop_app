@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DataBaseHelper.checkUser(usernameEditText.getText().toString(), passwordEditText.getText().toString());
+//                DataBaseHelper.checkUser(usernameEditText.getText().toString(), passwordEditText.getText().toString());
                 openHome();
             }
         });
