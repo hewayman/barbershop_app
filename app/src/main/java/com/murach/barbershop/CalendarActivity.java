@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
 
@@ -17,6 +18,8 @@ public class CalendarActivity extends AppCompatActivity {
     private static final String TAG = "CalendarActivity";
     private CalendarView calendarView;
     private TextView dateTextView;
+    private Button nextBtn;
+    private String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,7 @@ public class CalendarActivity extends AppCompatActivity {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                String date = (i1 + 1) + "/" + i2 + "/" + i;
+                date = (i1 + 1) + "/" + i2 + "/" + i;
                 Log.d(TAG, "onSelectedDayChange: mm/dd/yyyy: " + date);
 
 //                Intent intent = new Intent(CalendarActivity.this, MainActivity.class);
@@ -48,5 +51,19 @@ public class CalendarActivity extends AppCompatActivity {
 
             }
         });
+
+        nextBtn = (Button) findViewById(R.id.nextBtn);
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openConfirmationPage();
+            }
+        });
+    }
+
+    // continues to confirmation page
+    public void openConfirmationPage() {
+        Intent intent = new Intent(this, ConfirmationActivity.class);
+        startActivity(intent);
     }
 }

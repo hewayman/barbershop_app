@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -40,7 +42,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("drop Table if exists userInformation");
     }
 
-    public boolean addNewUser(UserModel userModel){
+    public boolean addNewUser(UserModel userModel) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -53,16 +55,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_USER_PASSWORD, userModel.getPassword());
 
         long insert = db.insert(USER_TABLE, null, cv);
-        if(insert == -1){
+        if (insert == -1) {
             return false;
-        }
-        else{
+        } else {
             return true;
         }
 
     }
 
-    public List<UserModel> getAllUsers(){
+    public List<UserModel> getAllUsers() {
 
         List<UserModel> returnList = new ArrayList<>();
 
@@ -72,9 +73,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery(queryString, null);
 
-        if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
 
-            do{
+            do {
                 int userID = cursor.getInt(0);
                 String userFName = cursor.getString(1);
                 String userLName = cursor.getString(2);
@@ -86,9 +87,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 UserModel newUser = new UserModel(userID, userFName, userLName, userEmail, userPhoneNumber, userUsername, userPassword);
                 returnList.add(newUser);
 
-            }while(cursor.moveToNext());
-        }
-        else{
+            } while (cursor.moveToNext());
+        } else {
             //failure. do not add anything to the list.
         }
 
@@ -97,94 +97,32 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
-    public Boolean insertuserdata(String name, String contact, String dob)
-    {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("name", name);
-        contentValues.put("contact", contact);
-        contentValues.put("dob", dob);
-        long result=DB.insert("BarberShop", null, contentValues);
-        if(result==-1){
-            return false;
-        }else{
+    public boolean checkIfUsernameExists(String username) {
+
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        Cursor cursor = myDB.rawQuery("select * from USER_TABLE where USER_USERNAME = ?", new String[]{username});
+
+        if (cursor.getCount() > 0) {
             return true;
-        }
-    }
-
-
-    public Boolean updateuserdata(String name, String contact, String dob) {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("contact", contact);
-        contentValues.put("dob", dob);
-        Cursor cursor = DB.rawQuery("Select * from Userdetails where name = ?", new String[]{name});
-        if (cursor.getCount() > 0) {
-            long result = DB.update("BarberShop", contentValues, "name=?", new String[]{name});
-            if (result == -1) {
-                return false;
-            } else {
-                return true;
-            }
-        } else {
-            return false;
-        }}
-
-
-    public Boolean deletedata (String name)
-    {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("Select * from Userdetails where name = ?", new String[]{name});
-        if (cursor.getCount() > 0) {
-            long result = DB.delete("Userdetails", "name=?", new String[]{name});
-            if (result == -1) {
-                return false;
-            } else {
-                return true;
-            }
         } else {
             return false;
         }
 
     }
 
-    public Cursor getdata ()
-    {
-        SQLiteDatabase DB = this.getWritableDatabase();
-        Cursor cursor = DB.rawQuery("Select * from Userdetails", null);
-        return cursor;
+    public boolean checkUsernameAndPassword(String username, String password) {
 
-    }
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        Cursor cursor = myDB.rawQuery("select * from USER_TABLE where USER_USERNAME = ? and USER_PASSWORD = ?", new String[]{username, password});
 
-    public boolean checkUser(String username, String password) {
-        // array of columns to fetch
-        String[] columns = {
-                COLUMN_USER_ID
-        };
-        SQLiteDatabase db = this.getReadableDatabase();
-        // selection criteria
-        String selection = COLUMN_USER_USERNAME + " = ?" + " AND " + COLUMN_USER_PASSWORD + " = ?";
-        // selection arguments
-        String[] selectionArgs = {username, password};
-        // query user table with conditions
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com' AND user_password = 'qwerty';
-         */
-        Cursor cursor = db.query(USER_TABLE, //Table to query
-                columns,                    //columns to return
-                selection,                  //columns for the WHERE clause
-                selectionArgs,              //The values for the WHERE clause
-                null,                       //group the rows
-                null,                       //filter by row groups
-                null);                      //The sort order
-        int cursorCount = cursor.getCount();
-        cursor.close();
-        db.close();
-        if (cursorCount > 0) {
+        if (cursor.getCount() > 0) {
+
+            Log.d("TEST", "IS THE QUERY GOING THROUGH????");
             return true;
+        } else {
+            Log.d("TEST", "NNNNOOOOOOOOOOO");
+
+            return false;
         }
-        return false;
     }
 }

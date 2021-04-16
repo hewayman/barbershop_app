@@ -1,6 +1,6 @@
 package com.murach.barbershop;
 
-public class UserModel {
+public class BarberModel {
 
     private int id;
     private String fName;
@@ -11,7 +11,7 @@ public class UserModel {
     private String password;
 
 
-    public UserModel(int id, String fName, String lName, String email, String phoneNumber, String userName, String password) {
+    public BarberModel(int id, String fName, String lName, String email, String phoneNumber, String userName, String password) {
         this.id = id;
         this.fName = fName;
         this.lName = lName;
@@ -22,7 +22,7 @@ public class UserModel {
 
     }
 
-    public UserModel() {
+    public BarberModel() {
     }
 
     public int getId() {
@@ -83,7 +83,7 @@ public class UserModel {
 
     @Override
     public String toString() {
-        return "UserModel{" +
+        return "BarberModel{" +
                 "id=" + id +
                 ", fName='" + fName + '\'' +
                 ", lName='" + lName + '\'' +

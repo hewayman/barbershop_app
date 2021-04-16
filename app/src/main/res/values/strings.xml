@@ -20,6 +20,8 @@
     <string name="login_text">Click here to login</string>
     <string name="username_text">Username</string>
     <string name="phone">Phone</string>
+    <string name="next">Next</string>
+    <string name="appt_confirmation">Appointment Details</string>
 
     <string-array name="barber_array">
         <item>Paul</item>

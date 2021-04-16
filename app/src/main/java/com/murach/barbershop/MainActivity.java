@@ -8,8 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.murach.barbershop.DataBaseHelper;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView goToRegisterTextView;
     private EditText usernameEditText;
     private EditText passwordEditText;
+    private TextView errorMessage;
+
+    DataBaseHelper myDB;
 
 
     @Override
@@ -26,19 +32,44 @@ public class MainActivity extends AppCompatActivity {
 
         usernameEditText = (EditText) findViewById(R.id.usernameEditText);
         passwordEditText = (EditText) findViewById(R.id.passwordEditText);
+        errorMessage = (TextView) findViewById(R.id.errorMessage);
+
+        myDB = new DataBaseHelper(this);
+
 
         addListenerOnButton();
         addListenerForRegistration();
     }
 
     public void addListenerOnButton() {
+
         // set listener for login button
         loginBtn = (Button) findViewById(R.id.loginBtn);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                DataBaseHelper.checkUser(usernameEditText.getText().toString(), passwordEditText.getText().toString());
-                openHome();
+
+                String username = usernameEditText.getText().toString();
+                String password = passwordEditText.getText().toString();
+
+                if(username.equals("") || password.equals("")){
+                    Toast.makeText(MainActivity.this, "Please Fill In All Fields", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Boolean loginCheckResult = myDB.checkUsernameAndPassword(username,password);
+                    if(loginCheckResult == true){
+                        errorMessage.setText("");
+                        openHome();
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this, "Invalid Input", Toast.LENGTH_SHORT).show();
+                        errorMessage.setText("Error with username or password.");
+
+//                        openRegistration();
+                        //openLoginPage();
+                    }
+                }
+
             }
         });
     }
@@ -69,5 +100,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // continues to login page
+    public void openLoginPage() {
 
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

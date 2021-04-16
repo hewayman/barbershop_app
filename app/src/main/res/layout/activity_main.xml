@@ -87,4 +87,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
 
+    <TextView
+        android:id="@+id/errorMessage"
+        android:layout_width="279dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="107dp"
+        android:layout_marginLeft="107dp"
+        android:layout_marginTop="15dp"
+        android:textColor="#F37272"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goToRegisterTextView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
