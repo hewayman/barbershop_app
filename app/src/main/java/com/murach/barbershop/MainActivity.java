@@ -22,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private TextView errorMessage;
 
+    public static String userID;
+    public static String userFName;
+    public static String userLName;
+
     DataBaseHelper myDB;
 
 
@@ -59,14 +63,17 @@ public class MainActivity extends AppCompatActivity {
                     Boolean loginCheckResult = myDB.checkUsernameAndPassword(username,password);
                     if(loginCheckResult == true){
                         errorMessage.setText("");
+
+//                        userID = myDB.getUserId(username,password);
+//                        userFName = myDB.getUserFName(username,password);
+//                        userLName = myDB.getUserLName(username,password);
+
                         openHome();
                     }
                     else{
                         Toast.makeText(MainActivity.this, "Invalid Input", Toast.LENGTH_SHORT).show();
                         errorMessage.setText("Error with username or password.");
 
-//                        openRegistration();
-                        //openLoginPage();
                     }
                 }
 

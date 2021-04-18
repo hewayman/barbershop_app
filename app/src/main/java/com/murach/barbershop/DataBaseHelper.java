@@ -117,12 +117,39 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if (cursor.getCount() > 0) {
 
-            Log.d("TEST", "IS THE QUERY GOING THROUGH????");
             return true;
+
         } else {
-            Log.d("TEST", "NNNNOOOOOOOOOOO");
 
             return false;
         }
+    }
+
+    public String getUserId(String username, String password){
+
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        Cursor cursor = myDB.rawQuery("select USER_ID from USER_TABLE where USER_USERNAME = ? and USER_PASSWORD = ?",new String[]{username, password});
+        int userID = cursor.getInt(0);
+        String userId = String.valueOf(userID);
+
+        return userId;
+    }
+
+    public String getUserFName(String username, String password){
+
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        Cursor cursor = myDB.rawQuery("select USER_FNAME from USER_TABLE where USER_USERNAME = ? and USER_PASSWORD = ?",new String[]{username, password});
+        String userFName = cursor.getString(1);
+
+        return userFName;
+    }
+
+    public String getUserLName(String username, String password){
+
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        Cursor cursor = myDB.rawQuery("select USER_LNAME from USER_TABLE where USER_USERNAME = ? and USER_PASSWORD = ?",new String[]{username, password});
+        String userLName = cursor.getString(2);
+
+        return userLName;
     }
 }
