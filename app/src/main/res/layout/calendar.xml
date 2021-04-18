@@ -8,14 +8,15 @@
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:layout_width="411dp"
-        android:layout_height="270dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="412dp"
+        android:layout_height="292dp"
+        android:layout_marginTop="4dp"
         android:focusedMonthDateColor="#FFFFFF"
         android:textColorPrimary="@color/orange"
         android:weekDayTextAppearance="@style/CustomCalendarWeek"
         android:weekNumberColor="#937979"
         android:weekSeparatorLineColor="#FDFCFC"
+        android:showWeekNumber="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +62,7 @@
         android:background="@color/tan"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView"
         app:layout_constraintVertical_bias="0.0" />

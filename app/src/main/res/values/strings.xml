@@ -24,6 +24,8 @@
     <string name="appt_confirmation">Appointment Details</string>
     <string name="ok">OK</string>
     <string name="go_home">Go Home</string>
+    <string name="back">Back</string>
+    <string name="book_appt">Book Appointment</string>
 
     <string-array name="barber_array">
         <item>Paul</item>

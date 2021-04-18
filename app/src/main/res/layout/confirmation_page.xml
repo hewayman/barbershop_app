@@ -10,7 +10,6 @@
         android:id="@+id/confirmationHeader"
         android:layout_width="411dp"
         android:layout_height="57dp"
-        android:background="#985920"
         android:gravity="center"
         android:text="@string/appt_confirmation"
         android:textColor="#C2B59B"
@@ -34,29 +33,29 @@
         app:layout_constraintTop_toBottomOf="@+id/confirmationHeader" />
 
     <Button
-        android:id="@+id/okBtn"
+        android:id="@+id/backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginTop="209dp"
-        android:text="@android:string/ok"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="208dp"
         android:background="#985920"
+        android:text="@string/back"
         android:textColor="#C2B59B"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateConfirmation" />
 
     <Button
-        android:id="@+id/goHomeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="69dp"
-        android:layout_marginLeft="69dp"
-        android:layout_marginTop="209dp"
+        android:id="@+id/bookBtn"
+        android:layout_width="151dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="208dp"
         android:background="#985920"
-        android:text="@string/go_home"
+        android:text="@string/book_appt"
         android:textColor="#C2B59B"
-        app:layout_constraintStart_toEndOf="@+id/okBtn"
+        app:layout_constraintStart_toEndOf="@+id/backBtn"
         app:layout_constraintTop_toBottomOf="@+id/dateConfirmation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
