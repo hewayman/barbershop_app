@@ -15,5 +15,6 @@ public class ConfirmationActivity extends AppCompatActivity {
         setContentView(R.layout.confirmation_page);
         dateConfirmation = (TextView) findViewById(R.id.dateConfirmation);
         dateConfirmation.setText("Test");
+
     }
 }
