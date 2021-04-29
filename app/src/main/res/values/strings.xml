@@ -26,6 +26,8 @@
     <string name="go_home">Go Home</string>
     <string name="back">Back</string>
     <string name="book_appt">Book Appointment</string>
+    <string name="view_appts">View Appointments</string>
+    <string name="make_appt">Make Appointment</string>
 
     <string-array name="barber_array">
         <item>Paul</item>

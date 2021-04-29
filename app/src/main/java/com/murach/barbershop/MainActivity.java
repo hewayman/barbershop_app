@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 //                        userFName = myDB.getUserFName(username,password);
 //                        userLName = myDB.getUserLName(username,password);
 
-                        openHome();
+                        openLandingPage();
                     }
                     else{
                         Toast.makeText(MainActivity.this, "Invalid Input", Toast.LENGTH_SHORT).show();
@@ -93,9 +93,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // continues to home page
-    public void openHome() {
-        Intent intent = new Intent(this, UserHomeActivity.class);
+    // continues to landing page
+    public void openLandingPage() {
+        Intent intent = new Intent(this, LandingPageActivity.class);
         startActivity(intent);
     }
 
