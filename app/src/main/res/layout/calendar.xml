@@ -8,9 +8,8 @@
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:layout_width="411dp"
-        android:layout_height="270dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="408dp"
+        android:layout_height="306dp"
         android:focusedMonthDateColor="#FFFFFF"
         android:textColorPrimary="@color/orange"
         android:weekDayTextAppearance="@style/CustomCalendarWeek"
@@ -25,14 +24,27 @@
         android:id="@+id/dateTextView"
         android:layout_width="144dp"
         android:layout_height="31dp"
-        android:layout_marginStart="132dp"
-        android:layout_marginLeft="132dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
         android:textColor="@color/tan"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <TextView
+        android:id="@+id/timeTextView"
+        android:layout_width="157dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/tan"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateTextView" />
 
     <Button
         android:id="@+id/nextBtn"
@@ -40,59 +52,41 @@
         android:layout_height="36dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="12dp"
         android:background="#985920"
         android:text="@string/next"
         android:textColor="#C2B59B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginBottom="412dp"
-        android:background="@color/tan"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/timeTextView" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="410dp"
-        android:layout_height="225dp"
-        android:layout_marginTop="18dp"
+        android:layout_width="411dp"
+        android:layout_height="195dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateTextView">
+        app:layout_constraintTop_toBottomOf="@+id/calendarView">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
 
             <Button
                 android:id="@+id/time1"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="#985920"
-                android:textSize="50dp"
+                android:onClick="buttonClicked"
                 android:text="8:00AM"
                 android:textColor="#C2B59B"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
@@ -100,14 +94,15 @@
             <Button
                 android:id="@+id/time2"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="#985920"
-                android:textSize="50dp"
+                android:onClick="buttonClicked"
                 android:text="9:00AM"
                 android:textColor="#C2B59B"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
@@ -115,14 +110,15 @@
             <Button
                 android:id="@+id/time3"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="#985920"
-                android:textSize="50dp"
+                android:onClick="buttonClicked"
                 android:text="10:00AM"
                 android:textColor="#C2B59B"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
@@ -130,14 +126,15 @@
             <Button
                 android:id="@+id/time4"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="#985920"
-                android:textSize="50dp"
+                android:onClick="buttonClicked"
                 android:text="11:00AM"
                 android:textColor="#C2B59B"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
@@ -145,14 +142,15 @@
             <Button
                 android:id="@+id/time5"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="#985920"
-                android:text= "1:00PM"
+                android:onClick="buttonClicked"
+                android:text="1:00PM"
                 android:textColor="#C2B59B"
-                android:textSize="50dp"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
@@ -160,14 +158,15 @@
             <Button
                 android:id="@+id/time6"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="#985920"
-                android:text= "2:00PM"
+                android:onClick="buttonClicked"
+                android:text="2:00PM"
                 android:textColor="#C2B59B"
-                android:textSize="50dp"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
@@ -175,14 +174,15 @@
             <Button
                 android:id="@+id/time7"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="#985920"
-                android:text= "3:00PM"
+                android:onClick="buttonClicked"
+                android:text="3:00PM"
                 android:textColor="#C2B59B"
-                android:textSize="50dp"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
@@ -190,14 +190,15 @@
             <Button
                 android:id="@+id/time8"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="#985920"
-                android:text= "4:00PM"
+                android:onClick="buttonClicked"
+                android:text="4:00PM"
                 android:textColor="#C2B59B"
-                android:textSize="50dp"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
@@ -205,14 +206,15 @@
             <Button
                 android:id="@+id/time9"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="#985920"
-                android:text= "5:00PM"
+                android:onClick="buttonClicked"
+                android:text="5:00PM"
                 android:textColor="#C2B59B"
-                android:textSize="50dp"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
@@ -220,17 +222,19 @@
             <Button
                 android:id="@+id/time10"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="#985920"
-                android:text= "6:00PM"
+                android:onClick="buttonClicked"
+                android:text="6:00PM"
                 android:textColor="#C2B59B"
-                android:textSize="50dp"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
         </LinearLayout>
     </ScrollView>
 
