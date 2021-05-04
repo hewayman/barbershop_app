@@ -28,6 +28,7 @@
     <string name="book_appt">Book Appointment</string>
     <string name="view_appts">View Appointments</string>
     <string name="make_appt">Make Appointment</string>
+    <string name="appointments">Appointments</string>
 
     <string-array name="barber_array">
         <item>Paul</item>

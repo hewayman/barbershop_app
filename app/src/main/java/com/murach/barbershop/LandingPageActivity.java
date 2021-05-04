@@ -52,7 +52,7 @@ public class LandingPageActivity extends AppCompatActivity {
 
     // continues to appointments page
     public void openAppts() {
-//        Intent intent = new Intent(this, UserHomeActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, AppointmentsActivity.class);
+        startActivity(intent);
     }
 }
