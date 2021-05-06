@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.zip.DataFormatException;
+
 public class UserRegistration extends AppCompatActivity {
 
     private TextView loginTextView;
@@ -50,7 +52,7 @@ public class UserRegistration extends AppCompatActivity {
                 UserModel userModel;
 
                 try{
-                    userModel = new UserModel(-1, firstNameEditText.getText().toString(), lastNameEditText.getText().toString(), emailEditText.getText().toString(), phoneEditText.getText().toString(), usernameEditText.getText().toString(), passwordRegisterEditText.getText().toString());
+                    userModel = new UserModel(-1, firstNameEditText.getText().toString(), lastNameEditText.getText().toString(), emailEditText.getText().toString(), phoneEditText.getText().toString(), usernameEditText.getText().toString(), DataBaseHelper.Encryption(passwordRegisterEditText.getText().toString()));
                 }
                 catch(Exception e){
                     Toast.makeText(UserRegistration.this, "Error Creating Account", Toast.LENGTH_SHORT).show();

@@ -3,6 +3,7 @@ package com.murach.barbershop;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
 
+
                 if(username.equals("") || password.equals("")){
                     Toast.makeText(MainActivity.this, "Please Fill In All Fields", Toast.LENGTH_SHORT).show();
                 }
@@ -64,10 +66,13 @@ public class MainActivity extends AppCompatActivity {
                     if(loginCheckResult == true){
                         errorMessage.setText("");
 
-//                        userID = myDB.getUserId(username,password);
-//                        userFName = myDB.getUserFName(username,password);
-//                        userLName = myDB.getUserLName(username,password);
-
+                        Cursor cursor = myDB.getReadableDatabase().query("USER_TABLE", null, "USER_USERNAME = ? and USER_PASSWORD = ?", new String[]{username, password}, null,null,null);
+                        while (cursor.moveToNext())
+                        {
+                            userID = "user ID: "+cursor.getInt(0);
+                            userFName = "user first name: "+cursor.getString(1);
+                            userLName = "user last name: "+cursor.getString(2);
+                        }
                         openLandingPage();
                     }
                     else{
@@ -115,3 +120,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
+

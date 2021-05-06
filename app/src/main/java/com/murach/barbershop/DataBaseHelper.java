@@ -24,6 +24,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_USER_PASSWORD = "USER_PASSWORD";
     public static final String COLUMN_USER_ID = "USER_ID";
 
+    //*************   NEW  ************************************
+
+    public static final String APPT_TABLE = "APPT_TABLE";
+    public static final String COLUMN_APPT_ID = "APPT_ID";
+    public static final String COLUMN_HAIRCUT = "HAIRCUT";
+    public static final String COLUMN_STYLE = "STYLE";
+    public static final String COLUMN_COLOR = "COLOR";
+    public static final String COLUMN_SHAVE = "SHAVE";
+    public static final String COLUMN_DATE = "DATE";
+    public static final String COLUMN_TIME = "TIME";
+
+    //********************************************************
+
     //Constructor
     public DataBaseHelper(Context context) {
         super(context, "BarberShop.db", null, 1);
@@ -35,6 +48,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         String createTableStatement = "CREATE TABLE " + USER_TABLE + " (" + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_USER_FNAME + " TEXT, " + COLUMN_USER_LNAME + " TEXT, " + COLUMN_USER_EMAIL + " TEXT, " + COLUMN_USER_PHONE + " TEXT, " + COLUMN_USER_USERNAME + " TEXT, " + COLUMN_USER_PASSWORD + " TEXT)";
 
         db.execSQL(createTableStatement);
+
+        //*****************   NEW   *************************************
+
+        String createNewTableStatement = "CREATE TABLE " + APPT_TABLE + " (" + COLUMN_APPT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_HAIRCUT + " TEXT, " + COLUMN_STYLE + " TEXT, " + COLUMN_COLOR + " TEXT, " + COLUMN_SHAVE + " TEXT, " + COLUMN_DATE + " TEXT, " + COLUMN_TIME + " TEXT, " + COLUMN_USER_ID + "INTEGER, FOREIGN KEY("+COLUMN_USER_ID+") REFERENCES "+DataBaseHelper.USER_TABLE+" ("+COLUMN_USER_ID+"))";
+
+        db.execSQL(createNewTableStatement);
+        //*****************************************************
+
     }
 
     @Override
@@ -62,6 +83,31 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
 
     }
+
+
+    //****************   NEW   ********************//
+    public boolean addNewAppointment(AppointmentModel appointmentModel) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_HAIRCUT, appointmentModel.isHaircut());
+        cv.put(COLUMN_STYLE, appointmentModel.isStyle());
+        cv.put(COLUMN_COLOR, appointmentModel.isColor());
+        cv.put(COLUMN_SHAVE, appointmentModel.isShave());
+        cv.put(COLUMN_DATE, appointmentModel.getDate());
+        cv.put(COLUMN_TIME, appointmentModel.getTime());
+        cv.put(COLUMN_USER_ID, MainActivity.userID);
+
+        long insert = db.insert(APPT_TABLE, null, cv);
+        if (insert == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    //***************************************************
 
     public List<UserModel> getAllUsers() {
 
@@ -97,6 +143,64 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
+//******************      NEW     ***************************************
+
+    public List<AppointmentModel> getAllAppointments(){
+
+        List<AppointmentModel> returnList = new ArrayList<>();
+        String queryString = "SELECT * FROM " + APPT_TABLE + "WHERE " + COLUMN_USER_ID + "= " + MainActivity.userID;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()){
+
+            do{
+                int apptID = cursor.getInt(0);
+                int haircut = cursor.getInt(1);
+                int style = cursor.getInt(2);
+                int color = cursor.getInt(3);
+                int shave = cursor.getInt(4);
+                String date = cursor.getString(5);
+                String time = cursor.getString(6);
+                boolean haircut1;
+                boolean style1;
+                boolean color1;
+                boolean shave1;
+
+                if (haircut == 0){
+                    haircut1 = false;
+                }
+                else haircut1 = true;
+                if (style == 0){
+                    style1 = false;
+                }
+                else style1 = true;
+                if (color == 0){
+                    color1 = false;
+                }
+                else color1 = true;
+                if (shave == 0){
+                    shave1 = false;
+                }
+                else shave1 = true;
+
+                AppointmentModel newAppointment = new AppointmentModel(apptID, haircut1, style1, color1, shave1, date, time);
+                returnList.add(newAppointment);
+
+            } while (cursor.moveToNext());
+        }
+        else{
+
+        }
+
+        cursor.close();
+        db.close();
+
+        return returnList;
+    }
+
+    //******************************************************************
+
     public boolean checkIfUsernameExists(String username) {
 
         SQLiteDatabase myDB = this.getReadableDatabase();
@@ -113,7 +217,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public boolean checkUsernameAndPassword(String username, String password) {
 
         SQLiteDatabase myDB = this.getReadableDatabase();
-        Cursor cursor = myDB.rawQuery("select * from USER_TABLE where USER_USERNAME = ? and USER_PASSWORD = ?", new String[]{username, password});
+        Cursor cursor = myDB.rawQuery("select * from USER_TABLE where USER_USERNAME = ? and USER_PASSWORD = ?", new String[]{username, Encryption(password)});
 
         if (cursor.getCount() > 0) {
 
@@ -125,31 +229,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public String getUserId(String username, String password){
+    public static String Encryption(String password){
 
-        SQLiteDatabase myDB = this.getReadableDatabase();
-        Cursor cursor = myDB.rawQuery("select USER_ID from USER_TABLE where USER_USERNAME = ? and USER_PASSWORD = ?",new String[]{username, password});
-        int userID = cursor.getInt(0);
-        String userId = String.valueOf(userID);
+        char[] chars = password.toCharArray();
 
-        return userId;
-    }
+        String newPassword = "";
 
-    public String getUserFName(String username, String password){
-
-        SQLiteDatabase myDB = this.getReadableDatabase();
-        Cursor cursor = myDB.rawQuery("select USER_FNAME from USER_TABLE where USER_USERNAME = ? and USER_PASSWORD = ?",new String[]{username, password});
-        String userFName = cursor.getString(1);
-
-        return userFName;
-    }
-
-    public String getUserLName(String username, String password){
-
-        SQLiteDatabase myDB = this.getReadableDatabase();
-        Cursor cursor = myDB.rawQuery("select USER_LNAME from USER_TABLE where USER_USERNAME = ? and USER_PASSWORD = ?",new String[]{username, password});
-        String userLName = cursor.getString(2);
-
-        return userLName;
+        for(char c : chars) {
+            c += 5;
+            newPassword += c;
+        }
+        return newPassword;
     }
 }

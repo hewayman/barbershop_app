@@ -22,8 +22,8 @@ public class CalendarActivity extends AppCompatActivity {
     private TextView dateTextView;
     private TextView timeTextView;
     private Button nextBtn;
-    private String date;
-    private String time;
+    public static String date;
+    public static String time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

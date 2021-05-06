@@ -16,10 +16,10 @@ public class UserHomeActivity extends AppCompatActivity {
     private Button styleBtn;
     private Button shaveBtn;
     private Button colorBtn;
-    private Boolean isHaircutClicked = false;
-    private Boolean isStyleClicked = false;
-    private Boolean isShaveClicked = false;
-    private Boolean isColorClicked = false;
+    public static Boolean isHaircutClicked = false;
+    public static Boolean isStyleClicked = false;
+    public static Boolean isShaveClicked = false;
+    public static Boolean isColorClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
